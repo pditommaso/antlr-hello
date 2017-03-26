@@ -1,0 +1,30 @@
+apply plugin: 'java'
+apply plugin: 'application'
+ 
+mainClassName = 'Hello'
+sourceSets {
+    main.java.srcDirs  = ['src/antlr4', 'src/main']
+}
+
+repositories {
+    jcenter()
+}
+ 
+dependencies {
+    compile 'org.antlr:antlr4:4.5.2'
+}
+ 
+task generateParser(type:JavaExec) {
+   main = 'org.antlr.v4.Tool'
+   classpath = sourceSets.main.compileClasspath
+   args = ['-Dlanguage=Java', 'Hello.g4', '-o', 'src/antlr4']
+}
+
+compileJava{
+    dependsOn generateParser
+}
+
+run {
+
+    args += 'test.txt'
+}
