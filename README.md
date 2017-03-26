@@ -17,6 +17,7 @@ Relevant files
 
 * `Hello.g4`: grammar definition
 * `test.txt`: simple input file
-* `Hello.java`: parser launcher class
+* `src/main/Hello.java`: parser launcher class
+* `src/antlr4`: generate lexer and parser classes
 
 
